@@ -6,7 +6,7 @@ from django.db.models import EmailField
 from YogaApp.accounts.managers import AppUserManager
 
 
-class UserProfile(AbstractBaseUser, PermissionsMixin):
+class AppUser(AbstractBaseUser, PermissionsMixin):
     email = EmailField(unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

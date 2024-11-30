@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import UserProfile, Profile
+from .models import AppUser, Profile
 
 
 class RegistrationForm(UserCreationForm):
@@ -9,7 +9,7 @@ class RegistrationForm(UserCreationForm):
     profile_picture = forms.URLField(required=False, label="Profile Picture")
 
     class Meta:
-        model = UserProfile
+        model = AppUser
         fields = ['email', 'password1', 'password2']
 
     def save(self, commit=True):
