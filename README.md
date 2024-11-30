@@ -1,4 +1,5 @@
 Yoga Studio Site 🧘‍♂
+
 Yoga Studio is a Django-based web application designed to enhance the yoga experience for both students and instructors. This platform allows users to:
 
 Create and Manage Profiles: Users can register, update their profiles, and set profile pictures.
