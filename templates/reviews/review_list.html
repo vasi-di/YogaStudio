@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Reviews</h2>
+    {% if reviews %}
+        <div class="list-group">
+            {% for review in reviews %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Review for: {{ review.yoga_class.name }}</h5>
+                    <p class="card-text">Rating: {{ review.rating }}/5</p>
+                        <span style="color: rebeccapurple;">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= review.rating %}
+                                    &#9733; 
+                                {% else %}
+                                    &#9734; 
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    <p class="card-text">{{ review.comments }}</p>
+                    <p class="card-text"><small class="text-muted">By {{ review.user.profile.display_name }} </small></p>
+                        <small class="text-muted">
+                        Created: {{ review.review_date|date:"F j, Y, H:i" }}
+                        {% if review.last_updated|date:"F j, Y, H:i" != review.review_date|date:"F j, Y, H:i" %}
+                            | Last Updated: {{ review.last_updated|date:"F j, Y, H:i" }}
+                        {% endif %}
+                        </small>
+                    {% if review.user == request.user %}
+                        <a href="{% url 'edit_review' review.pk %}" class="btn btn-warning" style="background-color: mediumpurple; color: white; border: hidden">Edit</a>
+                        <a href="{% url 'delete_review' review.pk %}" class="btn btn-danger" style="background: rebeccapurple; border: hidden">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>             
+        {% endfor %}
+    {% else %}
+        <p>No reviews yet. Be the first to review!</p>
+    {% endif %}
+    {% if user.is_authenticated %}
+        <div class="text-center mt-5 mb-5">
+            <a href="{% url 'add_review' %}" class="btn btn-light btn-lg d-block d-sm-inline-block mb-2 mb-sm-0 mr-sm-3" style="background-color: #e6ccff; color: #4c0080;">
+                Add a Review
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

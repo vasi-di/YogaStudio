@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Yoga Classes</h2>
+    <ul>
+        {% for yoga_class in classes %}
+            <li>
+                <a href="{% url 'class_detail' yoga_class.id %}">{{ yoga_class.name }}</a> - {{ yoga_class.level|capfirst }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

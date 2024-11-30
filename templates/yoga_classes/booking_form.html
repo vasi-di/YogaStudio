@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Book a Yoga Class</h1>
+    <form method="get" class="mb-4">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_yoga_class" class="font-weight-bold">Yoga Class</label>
+            <select name="yoga_class" id="id_yoga_class" class="form-control">
+                <option value="" disabled {% if not selected_yoga_class %} selected {% endif %}>Choose a class</option>
+                {% for yoga_class in yoga_classes %}
+                    <option value="{{ yoga_class.id }}"
+                        {% if selected_yoga_class and yoga_class.id == selected_yoga_class.id %} selected {% endif %}>
+                        {{ yoga_class.name }} with {{ yoga_class.instructor.name }}
+                    </option>
+                {% endfor %}
+            </select>
+            <small class="form-text text-muted">Select a yoga class and click "Load Schedule" to view its details.</small>
+            {% if form.yoga_class.errors %}
+                <ul class="errorList">
+                    {% for error in form.yoga_class.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-info btn-block">Load Schedule</button>
+    </form>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="font-weight-bold">Booking Date</label>
+            {{ form.booking_date.as_hidden }}
+            <input type="text" id="booking_date_display" 
+                   class="form-control" readonly
+                   value="{{ selected_schedule|default:'' }}">
+            <small class="form-text text-muted">The schedule for the selected yoga class.</small>
+        </div>
+        <input type="hidden" name="yoga_class" value="{{ selected_yoga_class.id }}">
+        <button type="submit" class="btn btn-primary btn-block"
+                {% if not selected_schedule %} disabled {% endif %}>Book Class</button>
+    </form>
+    <div class="mt-4 text-center">
+        <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+

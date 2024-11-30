@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">About Us</h2>
+    <p>Welcome to <strong>Om Oasis</strong>, your serene escape in the heart of the city. We’re more than a yoga studio; we’re a sanctuary where mind, body, and spirit harmonize amidst life’s daily hustle.</p>
+    <h3 class="mt-4">Why Choose Us?</h3>
+    <ul>
+        <li><strong>Diverse Classes for All Levels:</strong> Whether you’re a seasoned yogi or stepping onto the mat for the first time, we offer a wide range of classes to suit every level, from calming yin yoga to invigorating vinyasa flow.</li>
+        <li><strong>Expert Instructors:</strong> Our certified instructors bring years of experience, passion, and care to every class, guiding you with personalized attention to help you achieve your wellness goals.</li>
+        <li><strong>A Place to Connect:</strong> At Om Oasis, we’re more than a studio—we’re a community. Join us for workshops, events, and retreats designed to deepen your practice and foster meaningful connections.</li>
+    </ul>
+
+    <h3 class="mt-4">Step Inside Your Oasis</h3>
+    <p>
+        Imagine a tranquil space filled with natural light, soothing aromas, and an atmosphere designed to help you unwind. Our thoughtfully curated studios embody calm and mindfulness, inviting you to escape the chaos and embrace serenity.
+    </p>
+
+    <h3 class="mt-4">Join the Journey</h3>
+    <p>
+        Yoga isn’t just about poses; it’s about progress, healing, and growth. Wherever you are on your journey, <strong>Om Oasis</strong> is here to support and inspire you every step of the way.
+    </p>
+
+    <p class="text-center mt-4"><em>Let’s flow together. Namaste 🙏</em></p>
+    
+    <div class="text-center mt-5 mb-5">
+        <a href="{% url 'instructor_list' %}" class="btn btn-primary btn-lg d-block d-sm-inline-block mb-2 mb-sm-0 mr-sm-3" style="background-color: #e6ccff; color: #4c0080; border: none;">
+        Meet Our Instructors
+        </a>
+        <a href="{% url 'class_list' %}" class="btn btn-primary btn-lg d-block d-sm-inline-block mb-2 mb-sm-0 mr-sm-3" style="background-color: #e6ccff; color: #4c0080; border: none;">
+        Yoga classes
+        </a>
+        <a href="{% url 'review_list' %}" class="btn btn-primary btn-lg d-block d-sm-inline-block mb-2 mb-sm-0 mr-sm-3" style="background-color: #e6ccff; color: #4c0080; border: none;">
+        See Reviews
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Edit Profile</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="{% url 'password_change' %}" class="btn btn-warning">Change Password</a>
+        <a href="{% url 'profile_delete' profile.pk %}" class="btn btn-danger">Delete Profile</a>
+        <a href="{% url 'profile_detail' request.user.profile.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
+
+
+

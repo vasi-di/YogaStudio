@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Our Instructors</h2>
+    <div class="row">
+        {% for instructor in instructors %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ instructor.name }}</h5>
+                        <p class="card-text"><strong>Bio:</strong> {{ instructor.bio }}</p>
+                        <p class="card-text"><strong>Experience:</strong> {{ instructor.experience_years }} years</p>
+                        <p class="card-text"><strong>Specializations:</strong> {{ instructor.specializations }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center">
+        <h1>{{ profile.display_name }}'s Profile</h1>
+        <p><strong>Email:</strong> {{ profile.user.email }}</p>
+    </div>
+    <div class="text-center my-4">
+        {% if profile.profile_picture %}
+            <img src="{{ profile.profile_picture }}" alt="Profile Picture" class="img-thumbnail" style="max-width: 200px; height: auto;">
+        {% else %}
+            <img src="{% static 'images/user.png' %}" alt="Default Profile Picture" class="img-thumbnail" style="max-width: 200px; height: auto;">
+        {% endif %}
+    </div>
+    {% if bookings %}
+    <h3>Your Bookings</h3>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Yoga Class</th>
+                <th>Booking Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.yoga_class.name }}</td>
+                        <td>{{ booking.booking_date|date:"F j, Y, H:i" }}</td> 
+                        <td>{{ booking.get_status_display }}</td>
+                    </tr>
+                {% endfor %}
+    {% endif %}
+        </tbody>
+    </table>
+    <div class="mt-4 mb-5 text-center">
+        <a href="{% url 'profile_edit' profile.pk %}" class="btn btn-primary">Edit Profile</a>
+        <a href="{% url 'goal_list' %}" class="btn btn-success">View Your Goals</a>
+    </div>
+</div>
+{% endblock %}
+
