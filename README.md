@@ -1,4 +1,5 @@
 Yoga Studio Site 
+
 This is a Django-based web application which key functionalities include:
 
 Creating and Managing Profiles: Users can register, update their profiles, and set profile pictures. Each profile acts as a personalized hub for yoga activities.
