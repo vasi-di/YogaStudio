@@ -21,7 +21,7 @@ class Booking(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
 
     def save(self, *args, **kwargs):
-        total_bookings = self.yoga_class.bookings.count()
+        total_bookings = self.yoga_class.bookings.exclude(pk=self.pk).count() + 1
         if total_bookings < 3:
             self.status = 'pending'
         elif 3 <= total_bookings < 20:

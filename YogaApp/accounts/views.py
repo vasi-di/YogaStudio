@@ -1,3 +1,4 @@
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -22,7 +23,7 @@ def register(request):
 
 def login(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request, request.POST)  # Only pass request and request.POST
+        form = AuthenticationForm(request, request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
             return redirect('home')
@@ -36,11 +37,14 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
     template_name = 'accounts/profile_edit.html'
     fields = ['first_name', 'last_name', 'profile_picture']
 
+    def get_object(self, queryset=None):
+        profile = Profile.objects.get(pk=self.kwargs['pk'])
+        if profile.user != self.request.user:
+            raise PermissionDenied
+        return profile
+
     def get_success_url(self):
         return reverse('profile_detail', kwargs={'pk': self.object.pk})
-
-    def get_object(self):
-        return Profile.objects.get(user=self.request.user)
 
 
 class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView):

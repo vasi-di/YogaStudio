@@ -31,12 +31,12 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         yoga_class = form.cleaned_data['yoga_class']
         booking.booking_date = yoga_class.schedule
 
-        if Booking.objects.filter(user=self.request.user, yoga_class=yoga_class).exists():
-            form.add_error('yoga_class', 'You have already booked this class!')
-            return self.form_invalid(form)
-
         if Booking.objects.filter(yoga_class=yoga_class).count() >= 20:
             form.add_error('yoga_class', 'Sorry, this class is fully booked. Please select another class.')
+            return self.form_invalid(form)
+
+        if Booking.objects.filter(user=self.request.user, yoga_class=yoga_class).exists():
+            form.add_error('yoga_class', 'You have already booked this class!')
             return self.form_invalid(form)
 
         booking.save()
