@@ -16,10 +16,6 @@ def about(request):
     return render(request, 'about.html')
 
 
-def contact(request):
-    return render(request, 'contact.html')
-
-
 class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Booking
     form_class = YogaClassBookingForm

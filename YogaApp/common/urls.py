@@ -6,7 +6,6 @@ from YogaApp.common.views import ReviewListView, BookingCreateView, ReviewCreate
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
-    path('contact/', views.contact, name='contact'),
     path('book/', include([
         path('', BookingCreateView.as_view(), name='book_class'),
         path('<int:yoga_class_id>/', BookingCreateView.as_view(), name='book_class'),

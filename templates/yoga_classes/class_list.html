@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    <h2>Yoga Classes</h2>
-    <ul>
+<div class="container py-4">
+    <h2 class="text-center mb-4">Our Yoga Classes</h2>
+    <div class="row">
         {% for yoga_class in classes %}
-            <li>
-                <a href="{% url 'class_detail' yoga_class.id %}">{{ yoga_class.name }}</a> - {{ yoga_class.level|capfirst }}
-            </li>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-center">{{ yoga_class.name }}</h5>
+                    <p class="card-text text-muted text-center">{{ yoga_class.level|capfirst }} Level</p>
+                    <a href="{% url 'class_detail' yoga_class.id %}" class="btn btn-primary mt-auto">View Details</a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
+</div>
 {% endblock %}
+
+
+
+

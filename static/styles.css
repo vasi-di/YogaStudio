@@ -1,5 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Parkinsans", sans-serif;
     background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
                 url('/static/images/background.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -45,9 +60,56 @@ p, li {
     color: #e6ccff !important;
 }
 
+.navbar-toggler-checkbox {
+    display: none;
+}
+
+
 .navbar-toggler {
-    border: none;
-    outline: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.navbar-toggler-icon {
+    background-color: black;
+    width: 25px;
+    height: 3px;
+    display: block;
+    position: relative;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    background-color: black;
+    width: 25px;
+    height: 3px;
+    display: block;
+    position: absolute;
+    transition: 0.3s;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.navbar-toggler-icon::after {
+    top: 8px;
+}
+
+.navbar-toggler-checkbox:checked + .navbar-toggler + .navbar-collapse {
+    display: block;
+}
+
+.navbar-collapse {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+    }
 }
 
 .btn {
@@ -59,6 +121,10 @@ p, li {
     display: inline-block;
     background-color: #e6ccff;
     color: #4c0080;
+}
+
+.btn-primary {
+    border: #4c0080;
 }
 
 .btn-primary:hover {
@@ -77,6 +143,15 @@ p, li {
     background-color: #6f339a;
     transform: scale(1.05);
     border: none;
+}
+
+.btn-success {
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #d4b3ff;
+    transform: scale(1.05)
 }
 
 .btn-warning {
@@ -169,12 +244,16 @@ a:hover {
     text-decoration: underline;
 }
 
-
 footer {
-    background-color: #4c0080;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-    font-size: 0.9rem;
+    color: white !important;
+    font-size: 14px;
+    background-color: gray;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+footer p {
+    color: white !important;
+    margin: 0;
+    line-height: 1.6;
 }
