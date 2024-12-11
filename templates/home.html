@@ -1,5 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
     <h1>Welcome to Our Yoga Studio</h1>
+    <p><strong>Om Oasis</strong> is your serene escape in the heart of the city. 
+        We’re more than a yoga studio; we’re a sanctuary where mind, body, and spirit harmonize amidst life’s daily hustle.</p>
     <p>Your journey to wellness starts here.</p>
+    <a href="{% url 'class_list' %}" class="btn btn-primary mt-3">Choose a Class</a>
+    <div class="mt-5 d-flex align-items-center">
+        <img src="{% static 'images/hall_earth.jpg' %}" alt="Hall Earth">
+        <div class="text-container ml-3">
+            <h2>Hall Earth</h2>
+        </div>
+    </div>
+    <div class="mt-5 d-flex align-items-center">
+        <div class="text-container mr-3">
+            <h2>Hall Air</h2>
+        </div>
+        <img src="{% static 'images/hall_air.jpeg' %}" alt="Hall Air">
+    </div>
+    <div class="mt-4 text-right">
+        <h5>More about yoga at:</h5>
+        <a href="https://www.ommagazine.com/" target="_blank">
+            <img src="{% static 'images/om_magazine_logo.png' %}" alt="OM Magazine Logo" style="width:100px;">
+        </a>
+    </div>
 {% endblock %}

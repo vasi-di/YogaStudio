@@ -41,6 +41,18 @@ p, li {
     margin-top: 20px;
 }
 
+.container.mt-5{
+    margin-bottom: 3rem !important;
+}
+
+.container.mt-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.container.py-4 {
+    margin-bottom: 1.5rem !important;
+}
+
 .navbar {
     background-color: #4c0080 !important;
 }
@@ -256,4 +268,72 @@ footer p {
     color: white !important;
     margin: 0;
     line-height: 1.6;
+}
+
+img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    /* For smaller screens, stack images and text */
+    .d-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .text-container {
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .text-right {
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h5 {
+        font-size: 1rem;
+    }
+
+    /* Adjust button size for smaller screens */
+    .btn {
+        padding: 0.7rem 1.2rem;
+    }
+
+    /* Image adjustments */
+    img {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .mt-3, .mt-4, .mt-5 {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h5 {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+    }
 }

@@ -22,7 +22,7 @@
 
             <div class="navbar-collapse" id="navbarNav">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+                    <a class="nav-item nav-link" href="{% url 'about' %}">About us</a>
                     {% if user.is_authenticated %}
                         <a class="nav-item nav-link" href="{% url 'book_class' %}">Book a Class</a>
                         <a class="nav-item nav-link" href="{% url 'profile_detail' request.user.pk %}">Profile</a>
